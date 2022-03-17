@@ -3,7 +3,24 @@ const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const endPoint = 12;
 const select = [];
-
+let mbti = '';
+//I,E 0,6,8 / S,N 3,5,9 / F,T 1,4,11 / P,J 2,7,10
+function setResult(){
+  let point = calResult();
+  const resultName = document.querySelector('.resultName');
+  for(i=0;i<endPoint;i++){
+    if(infoList[i].key === point) break;
+  }
+  resultName.innerHTML = infoList[i].name;
+  var resultImg = document.createElement('img');
+  const imgDiv = document.querySelector('#resultImg');
+  resultImg.src = 'img/result/'+point+'.svg';
+  resultImg.alt = point;
+  resultImg.classList.add('img-fluid');
+  imgDiv.appendChild(resultImg);
+  const resultDesc = document.querySelector('.resultDesc');
+  resultDesc.innerHTML = infoList[i].desc;
+}
 function goResult(){
   qna.style.WebkitAnimation = "fadeOut 1s";
   qna.style.animation = "fadeOut 1s";
@@ -14,45 +31,15 @@ function goResult(){
       qna.style.display="none";
       result.style.display="block";
     },450)})
-  console.log(select);
-  calResult();
+  setResult();
 }
 function calResult(){
-  var pointArray = [
-    {name : 'istj' , value:0 , key:0},
-    {name : 'istp' , value:0 , key:1},
-    {name : 'isfj' , value:0 , key:2},
-    {name : 'isfp' , value:0 , key:3},
-    {name : 'intj' , value:0 , key:4},
-    {name : 'intp' , value:0 , key:5},
-    {name : 'infj' , value:0 , key:6},
-    {name : 'infp' , value:0 , key:7},
-    {name : 'estj' , value:0 , key:8},
-    {name : 'estp' , value:0 , key:9},
-    {name : 'esfj' , value:0 , key:10},
-    {name : 'esfp' , value:0 , key:11},
-    {name : 'entj' , value:0 , key:12},
-    {name : 'entp' , value:0 , key:13},
-    {name : 'enfj' , value:0 , key:14},
-    {name : 'enfp' , value:0 , key:15},
-    
-  ]
-  for (let i =0;i<endPoint;i++){
-    let ie,sn,tf,jp = 0;
-    var target = qnaList[i].a[select[i]];
-    
-  }
-  var resultArray = pointArray.sort(function (a,b){
-    if(a.value>b.value){
-      return -1;
-    }
-      if(a.value<b.value){
-      return 1;
-    }
-    return 0;
-  });
-  let resultword = resultArray[0].key;
-  return resultword;
+  let mbti = '';
+  select[0] + select[6] + select[8] < 2 ?  mbti += 'I' : mbti+='E';
+  select[3] + select[5] + select[9] < 2 ?  mbti += 'S' : mbti+='N';
+  select[1] + select[4] + select[11] < 2 ?  mbti += 'F' : mbti+='T';
+  select[2] + select[7] + select[10] < 2 ?  mbti += 'P' : mbti+='J';
+  return mbti;
 }
 
 function addAnsButton(answerText,qIdx,idx){
@@ -108,5 +95,4 @@ function begin(){
     let qIdx = 0;
     goNext(qIdx);
   },450)
-  
 }
