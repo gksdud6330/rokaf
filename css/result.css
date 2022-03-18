@@ -5,7 +5,6 @@
   text-align : center;
   border-radius : 20px;
 }
-
 .resultDesc{
   font-size:14px;
 }
@@ -16,7 +15,7 @@
 .kakao{
   color:black;
   background-color : #FEE500;
-  font-size:20px;
+  font-size:16px;
   border:0px;
   border-radius:20px;
 }
@@ -24,4 +23,13 @@
 .kakao:hover, .kakao:focus{
   background-color:white;
   color:#FEE500;
+}
+
+.app-download{
+  height:29px;
+  margin-right:3px;
+  margin-left:3px;
+  cursor:pointer;
+  vertical-align:middle;
+  border:0px;
 }
