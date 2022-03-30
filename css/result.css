@@ -5,6 +5,13 @@
   text-align : center;
   border-radius : 20px;
 }
+
+#shareResult{
+  background-color : white;
+  width:80%;
+  text-align : center;
+  border-radius : 20px;
+}
 .resultDesc{
   font-size:14px;
 }
@@ -24,7 +31,17 @@
   background-color:white;
   color:#FEE500;
 }
-
+.goHome{
+  color:black;
+  background-color :lightskyblue;
+  font-size:16px;
+  border:0px;
+  border-radius:20px;
+}
+.goHome:hover, .goHome:focus{
+  background-color:white;
+  color:lightskyblue;
+}
 .app-download{
   height:29px;
   margin-right:3px;
